@@ -1,7 +1,8 @@
 ﻿#include <iostream>
 #include <string>
 #include <Windows.h>
-#include "DinamLibRace.h"
+#include "AirVehicle.h"
+#include "GroundVehicle.h"
 
 int main() {
 
@@ -21,7 +22,6 @@ int main() {
         std::string masName[10] = { "пустой элемент","пустой элемент","пустой элемент","пустой элемент","пустой элемент","пустой элемент","пустой элемент","пустой элемент","пустой элемент","пустой элемент" };
         std::string device[10] = { "пустой элемент 0","Ботинки - вездеходы", "Метла", "Верблюд", "Кентавр", "Орёл", "Верблюд-быстроход", "Ковёр-самолёт", "пустой элемент 8", "пустой элемент 9" };
 
-
         do {
             std::cout << "1. " << nameRaceType[1] << "\n"
                 "2. " << nameRaceType[2] << "\n" <<
@@ -34,31 +34,33 @@ int main() {
         do {
             std::cout << "Укажите длинну дистанции (должна быть положительна): ";
             std::cin >> distance;
-            std::cout << "\n";
         } while (distance <= 0);
 
         do {
             do {
-                std::cout << "\n 1. Зарегистрировать транспорт." << "\n 2. Начать гонку.\n Выберите действие ";
+                std::cout << "\n 1. Зарегистрировать транспорт." << "\n 2. Начать гонку.\n Выберите действие: ";
                 std::cin >> a;
-                if (ii < 2 && a == 2) {
+                if (ii < 3 && a == 2) {
                     std::cout << "\nДолжно быть зарегистрировано хотябы 2 транспортных средства.";
                     a = 5;
                 }
             } while (a != 1 && a != 2);
 
-
             if (a == 1) {
                 do {
                     std::cout << "\n" << nameRaceType[RaceType] << " Расстояние: " << distance << " ";
-                    if (ii == 0) { std::cout << "\n Нет зарегистрированного транспорта"; }
+                    if (ii == 1) { std::cout << "\n Нет зарегистрированного транспорта"; }
 
                     else {
                         std::cout << "\n Зарегистрированные ТС: ";
-                        for (int i = 1; i < ii; ++i) {
-                            std::cout << masName[i] << ", ";
-                        }
-                    }
+                       
+                            std::cout << masName[1];
+                      
+                            for (int i = 2; i < ii; ++i) {                       
+                                    std::cout << ", ";                              
+                                std::cout << masName[i];
+                            }
+                        }                  
 
                     std::cout << "\n 1. " << device[1] <<
                         "\n 2. " << device[2] <<
@@ -75,11 +77,12 @@ int main() {
                         break;
                     }
                     else if (b > 7 || b < 0) {
+                        std::cout << "\nВведите корректную цифру";
                         continue;
                     }
 
                     else if (RaceType == 1) {
-                        if (b > 0 && b < 5) {
+                        if (b == 1 || b == 3 || b == 4 || b == 6) {
 
                             for (int i = 0; i < 10; ++i) {
 
@@ -105,7 +108,7 @@ int main() {
                     }
 
                     else if (RaceType == 2) {
-                        if (b > 4 && b < 8) {
+                        if (b == 2 || b == 5 || b ==7) {
 
                             for (int i = 0; i < 10; ++i) {
 
@@ -140,7 +143,6 @@ int main() {
                                 b = 15;
                                 continue;
                             }
-
                         }
 
                         if (b != 15) {
@@ -159,26 +161,26 @@ int main() {
 
         for (int i = 1; i < 10; ++i) {
             if (massIndex[i] == 1) {
-                dinam_lib_Race::Camel z1;
-                mas_time[i] = z1.Funk_camel(distance);
+                dinam_lib_Race::All_terrain_boots z1;
+                mas_time[i] = z1.Funk_all_terrain_boots(distance);
                 ++sum;
             }
 
             else if (massIndex[i] == 2) {
-                dinam_lib_Race::Camel_speedboat z2;
-                mas_time[i] = z2.Funk_camel_speedboat(distance);
+                dinam_lib_Race::Broom z2;
+                mas_time[i] = z2.Funk_broom(distance);
                 ++sum;
             }
 
             else if (massIndex[i] == 3) {
-                dinam_lib_Race::Centaur z3;
-                mas_time[i] = z3.Funk_centaur(distance);
+                dinam_lib_Race::Camel z3;
+                mas_time[i] = z3.Funk_camel(distance);
                 ++sum;
             }
 
             else if (massIndex[i] == 4) {
-                dinam_lib_Race::All_terrain_boots z4;
-                mas_time[i] = z4.Funk_all_terrain_boots(distance);
+                dinam_lib_Race::Centaur z4;
+                mas_time[i] = z4.Funk_centaur(distance);
                 ++sum;
             }
 
@@ -189,8 +191,8 @@ int main() {
             }
 
             else if (massIndex[i] == 6) {
-                dinam_lib_Race::Broom z6;
-                mas_time[i] = z6.Funk_broom(distance);
+                dinam_lib_Race::Camel_speedboat z6;
+                mas_time[i] = z6.Funk_camel_speedboat(distance);
                 ++sum;
             }
 
@@ -200,8 +202,6 @@ int main() {
                 ++sum;
             }
         }
-
-
 
         for (int i = 1; i < sum; ++i) {
             for (int j = 1; j < sum; ++j) {
@@ -220,12 +220,10 @@ int main() {
         std::cout << "\nРезультат гонки: ";
         for (int i = 1; i < sum + 1; ++i) {
             std::cout << "\n" << i << ". " << masName[i] << ". Время: " << mas_time[i];
-
         }
 
-        std::cout << "\n\n1. Провести ещё одну гонку\n2. Выйти\nВыберите действие:";
+        std::cout << "\n\n1. Провести ещё одну гонку\n2. Выйти\nВыберите действие: ";
         std::cin >> e;
-
     }
 
     system("pause");
