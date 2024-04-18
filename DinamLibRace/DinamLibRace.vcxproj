@@ -140,14 +140,26 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AirVehicle.h" />
+    <ClInclude Include="AllTerrainBoots.h" />
+    <ClInclude Include="Broom.h" />
+    <ClInclude Include="Camel.h" />
+    <ClInclude Include="CamelSpeedboat.h" />
+    <ClInclude Include="Centaur.h" />
+    <ClInclude Include="Eagle.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="GroundVehicle.h" />
+    <ClInclude Include="MagicCarpet.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="AirVehicle.cpp" />
+    <ClCompile Include="AllTerrainBoots.cpp" />
+    <ClCompile Include="Broom.cpp" />
+    <ClCompile Include="Camel.cpp" />
+    <ClCompile Include="CamelSpeedboat.cpp" />
+    <ClCompile Include="Centaur.cpp" />
     <ClCompile Include="dllmain.cpp" />
-    <ClCompile Include="GroundVehicle.cpp" />
+    <ClCompile Include="Eagle.cpp" />
+    <ClCompile Include="MagicCarpet.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

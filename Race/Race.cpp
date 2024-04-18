@@ -3,6 +3,14 @@
 #include <Windows.h>
 #include "AirVehicle.h"
 #include "GroundVehicle.h"
+#include "Camel.h"
+#include "CamelSpeedboat.h"
+#include "AllTerrainBoots.h"
+#include "Centaur.h"
+#include "Eagle.h"
+#include "MagicCarpet.h"
+#include "Broom.h"
+
 
 int main() {
 
@@ -157,9 +165,8 @@ int main() {
             }
 
         } while (a == 1);
-
-
-        for (int i = 1; i < 10; ++i) {
+    
+     for (int i = 1; i < 10; ++i) {
             if (massIndex[i] == 1) {
                 dinam_lib_Race::All_terrain_boots z1;
                 mas_time[i] = z1.Funk_all_terrain_boots(distance);
